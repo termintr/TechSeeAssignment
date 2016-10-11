@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "TechSee assignment";
+}
+
+<script language="JavaScript">
+
+    function toggleALL(groupName) {
+
+        var checkboxes = document.getElementsByClassName(groupName);
+
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+            checkboxes[i].checked = true;
+        }
+    }
+
+</script>
+
+<div class="row">
+    <h2>TechSee assignment</h2>
+    <p class="lead">Find testers (sorted by experience):</p>
+</div>
+@model TechSeeQueries.Models.HomeModel
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+<div class="row">
+    <div class="col-md-2">
+        <h3>Countries</h3>
+        <p>
+            <div class="container">
+                <div class="checkbox">
+                    <label><input type="button" value="ALL" class="btn btn-info" onclick="toggleALL('Countries')" /></label>
+                </div>
+                @for (int i = 0; i < Model.Countries.Count; i++)
+                {
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => Model.Countries[i].Selected, new { @class = "checkbox Countries" })
+                        @Html.HiddenFor(m => Model.Countries[i].Text)
+                        @Html.HiddenFor(m => Model.Countries[i].Value)
+                        @Html.DisplayTextFor(m => Model.Countries[i].Text)
+                    </div>
+                }
+            </div>
+        </p>
+    </div>
+    <div class="col-md-2">
+        <h3>Devices</h3>
+        <p>
+            <div class="container">
+                <div class="checkbox">
+                    <label><input type="button" value="ALL" class="btn btn-info" onclick="toggleALL('Devices')" /></label>
+                </div>
+                @for (int i = 0; i < Model.Devices.Count; i++)
+                {
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => Model.Devices[i].Selected, new { @class = "checkbox Devices" })
+                        @Html.HiddenFor(m => Model.Devices[i].Text)
+                        @Html.HiddenFor(m => Model.Devices[i].Value)
+                        @Html.DisplayTextFor(m => Model.Devices[i].Text)
+                    </div>
+                }
+            </div>
+        </p>
+    </div>
+    <br/>
+</div>
+<div class="row ">
+    <div class="col-md-offset-1">
+        <input type="submit" value="Match testers" class="btn btn-primary" />
+    </div>
+</div>
+}
+<div class="row">
+    <div class="col-md">
+        <h3>Matches</h3>
+        <p>
+            <div class="container">
+                @if (Model.Testers == null || Model.Testers.Count == 0)
+                {
+                    <input type="text" class="alert text-warning" value="No matches" />
+                }
+                else
+                {
+                    for (int i = 0; i < Model.Testers.Count; i++)
+                    {
+                        <div class="checkbox">
+                            @Html.DisplayTextFor(m => Model.Testers[i].Name)
+                            (@Html.DisplayTextFor(m => Model.Testers[i].Experience) EXP)
+                        </div>
+                    }
+                }
+            </div>
+        </p>
+    </div>
+    <br />
+</div>
