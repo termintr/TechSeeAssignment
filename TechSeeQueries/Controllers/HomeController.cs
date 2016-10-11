@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using TechSeeQueries.Models;
 using TechSeeQueries.Providers;
@@ -13,10 +14,10 @@ namespace TechSeeQueries.Controllers
         DataProvider m_DataProvider;
 
         public HomeController() : this(
-            i_TestersFilePath: ConfigurationManager.AppSettings["TestersFilePath"],
-            i_DevicesFilePath: ConfigurationManager.AppSettings["DevicesFilePath"],
-            i_BugsFilePath: ConfigurationManager.AppSettings["BugsFilePath"],
-            i_TesterDevicesFilePath: ConfigurationManager.AppSettings["TesterDevicesFilePath"])
+            i_TestersFilePath: HostingEnvironment.MapPath(ConfigurationManager.AppSettings["TestersFilePath"]),
+            i_DevicesFilePath: HostingEnvironment.MapPath(ConfigurationManager.AppSettings["DevicesFilePath"]),
+            i_BugsFilePath: HostingEnvironment.MapPath(ConfigurationManager.AppSettings["BugsFilePath"]),
+            i_TesterDevicesFilePath: HostingEnvironment.MapPath(ConfigurationManager.AppSettings["TesterDevicesFilePath"]))
         {
         }
 
