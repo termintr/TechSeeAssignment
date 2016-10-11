@@ -141,8 +141,8 @@
     <Content Include="App_Data\devices.csv" />
     <Content Include="App_Data\testers.csv" />
     <Content Include="App_Data\tester_device.csv" />
-    <None Include="Properties\PublishProfiles\80963240-0ee0-4-231-b9ee - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\80963240-0ee0-4-231-b9ee - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\TechSeeAssignment - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\TechSeeAssignment - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -168,7 +168,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
